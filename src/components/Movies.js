@@ -1,35 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { selectMovies } from "../features/movie/movieSlice";
+import { useSelector } from "react-redux";
 
 function Movies() {
+  const movies = useSelector(selectMovies);
+
   return (
     <Container>
       <h4>Recommended for You</h4>
       <Content>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTrle5aDBd22VtEzk_KUk-kXizbFfNwwO3LL58K-BR1mRVAwlCXf3Ble8O300zBnM2920&usqp=CAU"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTrle5aDBd22VtEzk_KUk-kXizbFfNwwO3LL58K-BR1mRVAwlCXf3Ble8O300zBnM2920&usqp=CAU"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTrle5aDBd22VtEzk_KUk-kXizbFfNwwO3LL58K-BR1mRVAwlCXf3Ble8O300zBnM2920&usqp=CAU"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTrle5aDBd22VtEzk_KUk-kXizbFfNwwO3LL58K-BR1mRVAwlCXf3Ble8O300zBnM2920&usqp=CAU"
-            alt=""
-          />
-        </Wrap>
+        {movies &&
+          movies.map((movie) => {
+            <Wrap key={movie.id}>
+              <img src={movie.cardImg} alt="movie-posters" />
+            </Wrap>;
+          })}
       </Content>
     </Container>
   );
